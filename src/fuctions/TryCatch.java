@@ -1,12 +1,21 @@
 package fuctions;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import exceptions.MyException;
 
 
 public class TryCatch {
+    public static void tryCatch(RunnableThrowableMyException func, Consumer<MyException> errorHandler) {
+        try {
+            func.run();
+        } catch (MyException e) {
+            errorHandler.accept(e);
+        }
+    }
+
     public static <R> void tryCatch(RunnableThrowableMyException func, Function<MyException, R> errorHandler) {
         try {
             func.run();

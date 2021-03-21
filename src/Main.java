@@ -1,4 +1,4 @@
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 import exceptions.MyException;
 import fuctions.TryCatch;
@@ -7,10 +7,7 @@ import fuctions.TryCatch;
 public class Main {
     public static void main(String[] args) {
         // エラーを処理する関数。今回はExceptionを表示するだけ
-        Function<MyException, Void> errorHandler = (e) -> {
-            System.out.println(e.getMessage());
-            return null;
-        };
+        Consumer<MyException> errorHandler = (e) -> System.out.println(e.getMessage());
 
         TryCatch.tryCatch(Main::doSomething1, errorHandler);
         TryCatch.tryCatch(Main::doSomething2, errorHandler);
